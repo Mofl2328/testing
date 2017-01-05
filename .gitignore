@@ -1,1 +1,4 @@
 *.suo
+*.dll
+bin/Bot Application1.dll.config
+*.pdb

@@ -40,3 +40,39 @@ C:\Users\Mofl\OneDrive\Anwendungen\Azure Web Apps\movl-test-bot\obj\Debug\Bot Ap
 C:\Users\Mofl\Documents\GitHub\testing\obj\Debug\movl-test-bot.csprojResolveAssemblyReference.cache
 C:\Users\Mofl\Documents\GitHub\testing\obj\Debug\Bot Application1.dll
 C:\Users\Mofl\Documents\GitHub\testing\obj\Debug\Bot Application1.pdb
+C:\Users\Mofl\Documents\GitHub\testing\bin\Bot Application1.dll.config
+C:\Users\Mofl\Documents\GitHub\testing\bin\Bot Application1.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\Bot Application1.pdb
+C:\Users\Mofl\Documents\GitHub\testing\bin\Autofac.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\Chronic.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.Bot.Builder.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.Bot.Connector.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.Rest.ClientRuntime.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\Newtonsoft.Json.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\System.Net.Http.Formatting.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\System.Web.Http.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\System.Web.Http.WebHost.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\Autofac.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.Bot.Builder.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.Bot.Connector.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.IdentityModel.Protocol.Extensions.pdb
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.Rest.ClientRuntime.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\Newtonsoft.Json.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\Mofl\Documents\GitHub\testing\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\System.Net.Http.Formatting.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\System.Web.Http.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\System.Web.Http.WebHost.xml
+C:\Users\Mofl\Documents\GitHub\testing\bin\ar\Microsoft.Bot.Builder.resources.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\en\Microsoft.Bot.Builder.resources.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\es\Microsoft.Bot.Builder.resources.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\fa\Microsoft.Bot.Builder.resources.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\fr\Microsoft.Bot.Builder.resources.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\ja\Microsoft.Bot.Builder.resources.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\ru\Microsoft.Bot.Builder.resources.dll
+C:\Users\Mofl\Documents\GitHub\testing\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
