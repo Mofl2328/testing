@@ -8,7 +8,6 @@ using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
 using Microsoft.Bot.Builder.Dialogs;
-using movl_test_bot.Classes;
 
 namespace movl_test_bot
 {
