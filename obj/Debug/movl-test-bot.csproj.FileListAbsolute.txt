@@ -37,3 +37,6 @@ C:\Users\Mofl\OneDrive\Anwendungen\Azure Web Apps\movl-test-bot\bin\zh-hans\Micr
 C:\Users\Mofl\OneDrive\Anwendungen\Azure Web Apps\movl-test-bot\obj\Debug\movl-test-bot.csprojResolveAssemblyReference.cache
 C:\Users\Mofl\OneDrive\Anwendungen\Azure Web Apps\movl-test-bot\obj\Debug\Bot Application1.dll
 C:\Users\Mofl\OneDrive\Anwendungen\Azure Web Apps\movl-test-bot\obj\Debug\Bot Application1.pdb
+C:\Users\Mofl\Documents\GitHub\testing\obj\Debug\movl-test-bot.csprojResolveAssemblyReference.cache
+C:\Users\Mofl\Documents\GitHub\testing\obj\Debug\Bot Application1.dll
+C:\Users\Mofl\Documents\GitHub\testing\obj\Debug\Bot Application1.pdb
