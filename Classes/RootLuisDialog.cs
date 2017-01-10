@@ -17,6 +17,7 @@ namespace movl_test_bot
         public async Task HelpDialoge(IDialogContext context, LuisResult result)
         {
             Dictionary<string, List<EntityRecommendation>> entitiesSorted = sortByEntity(result);
+            context.Done(true);
 
         }
 
@@ -59,6 +60,7 @@ namespace movl_test_bot
                     }
                 }
             }
+            context.Done(true);
         }
 
         [LuisIntent("")]
@@ -66,6 +68,8 @@ namespace movl_test_bot
         public async Task DidntUnderstand(IDialogContext context, LuisResult result)
         {
             await context.PostAsync("Ich war nicht in der Lage die Nachricht zu verstehen. Bitte probiere es noch einmal.");
+            context.Done(true);
+
         }
 
 
