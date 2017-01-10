@@ -18,6 +18,7 @@ namespace movl_test_bot
         public async Task HelpDialoge(IDialogContext context, LuisResult result)
         {
             Dictionary<string, List<EntityRecommendation>> entitiesSorted = sortByEntity(result);
+            await context.PostAsync("TODO");
             context.Done(true);
 
         }
@@ -28,9 +29,6 @@ namespace movl_test_bot
 
 
             Dictionary<string, List<EntityRecommendation>> entitiesSorted = sortByEntity(result);
-
-            await context.PostAsync("Found:" + entitiesSorted["ServiceKeyWord"].Count);
-            await context.PostAsync("Found:" + entitiesSorted["Person"].Count);
 
             bool responseGiven = false;
             foreach (var ent in entitiesSorted["ServiceKeyWord"])
@@ -68,7 +66,7 @@ namespace movl_test_bot
         [LuisIntent("None")]
         public async Task DidntUnderstand(IDialogContext context, LuisResult result)
         {
-            await context.PostAsync("Ich war nicht in der Lage die Nachricht zu verstehen. Bitte probiere es noch einmal.");
+            await context.PostAsync("Ich war nicht in der Lage die Nachricht zu verstehen. Frag doch mal wie es den Personen geht, die du betreust.");
             context.Done(true);
 
         }
