@@ -1,6 +1,7 @@
 ﻿using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
+using movl_test_bot.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
