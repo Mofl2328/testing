@@ -9,6 +9,7 @@ namespace movl_test_bot
 {
     public static class KeyWords
     {
-        public static string[] statusWords = { "ist", "war", "geht", "ging" };
+        public static string[] statusWords = { "ist", "war", "geht", "ging", "ordnung", "waren" };
+        public static string[] allPersonsWords = { "alle", "allen", "jedem", "jede", "alles" };
     }
 }
