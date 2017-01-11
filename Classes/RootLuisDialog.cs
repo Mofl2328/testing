@@ -23,6 +23,51 @@ namespace movl_test_bot
 
         }
 
+        [LuisIntent("Aktion")]
+        public async Task ActionDialoge(IDialogContext context, LuisResult result)
+        {
+            Dictionary<string, List<EntityRecommendation>> entitiesSorted = sortByEntity(result);
+
+            bool responseGiven = false;
+            foreach (var ent in entitiesSorted["ServiceKeyWord"])
+            {
+                if (KeyWords.actionOnWords.Contains(ent.Entity.ToLower()) && !responseGiven)
+                {
+                    foreach (EntityRecommendation function in entitiesSorted["Funktion"])
+                    {
+                        if (KeyWords.functionHolidayWords.Contains(function.Entity.ToLower()))
+                        {
+                            await setFunction(context, "urlaubsmodus", true);
+                            responseGiven = true;
+                        }
+                    }
+
+                }
+                else if (KeyWords.actionOffWords.Contains(ent.Entity.ToLower()) && !responseGiven)
+                {
+                    foreach (EntityRecommendation function in entitiesSorted["Funktion"])
+                    {
+                        if (KeyWords.functionHolidayWords.Contains(function.Entity.ToLower()))
+                        {
+                            await setFunction(context, "urlaubsmodus", false);
+                            responseGiven = true;
+                        }
+                    }
+
+                }
+
+            }
+            context.Done(true);
+        }
+
+        private async Task setFunction(IDialogContext context, string function, bool set)
+        {
+            await context.PostAsync("app:setfunction:\"" + function + "\":" + set);
+        }
+
+
+
+
         [LuisIntent("Auskunft")]
         public async Task AuskunftDialoge(IDialogContext context, LuisResult result)
         {
@@ -40,9 +85,11 @@ namespace movl_test_bot
                         if (KeyWords.allPersonsWords.Contains(entitiesSorted["Person"].First().Entity.ToLower()))
                         {
                             await sendStatusOfAll(context);
+                            responseGiven = true;
                         } else
                         {
                             await sendStatusOfPerson(context, entitiesSorted["Person"].First().Entity.ToLower());
+                            responseGiven = true;
 
                         }
                     } else if (entitiesSorted["Person"].Count > 1)
@@ -56,6 +103,7 @@ namespace movl_test_bot
                             }
                         }
                         await sendStatusOfPerson(context, names);
+                        responseGiven = true;
                     }
                 }
             }
