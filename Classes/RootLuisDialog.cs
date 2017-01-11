@@ -18,9 +18,24 @@ namespace movl_test_bot
         public async Task HelpDialoge(IDialogContext context, LuisResult result)
         {
             Dictionary<string, List<EntityRecommendation>> entitiesSorted = sortByEntity(result);
-            await context.PostAsync("TODO");
-            context.Done(true);
+            bool responseGiven = false;
+            foreach (var ent in entitiesSorted["Funktion"])
+            {
+                var entString = ent.Entity.ToLower();
 
+                if (KeyWords.functionHolidayWords.Contains(entString) && !responseGiven)
+                {
+                    await context.PostAsync("Der Urlaubsmodus ist unter Profil -> Optionen -> Anwesenheit aktivierbar.");
+                    responseGiven = true; context.Done(true);
+                }
+                else if (KeyWords.functionHelperWords.Contains(entString) && !responseGiven)
+                {
+                    await context.PostAsync("Sie können neue Helfer auf der Startseite über das + in der rechten oberen Ecke hinzufügen.");
+                    responseGiven = true; context.Done(true);
+                }
+            }
+            if (!responseGiven)
+                context.Done(true);
         }
 
         [LuisIntent("Aktion")]
@@ -28,9 +43,11 @@ namespace movl_test_bot
         {
             Dictionary<string, List<EntityRecommendation>> entitiesSorted = sortByEntity(result);
 
+
             bool responseGiven = false;
             foreach (var ent in entitiesSorted["ServiceKeyWord"])
             {
+
                 if (KeyWords.actionOnWords.Contains(ent.Entity.ToLower()) && !responseGiven)
                 {
                     foreach (EntityRecommendation function in entitiesSorted["Funktion"])
@@ -38,8 +55,8 @@ namespace movl_test_bot
                         if (KeyWords.functionHolidayWords.Contains(function.Entity.ToLower()))
                         {
                             await setFunction(context, "urlaubsmodus", true);
-                            responseGiven = true;
-                        }
+                            responseGiven = true; context.Done(true);
+                        } 
                     }
 
                 }
@@ -50,6 +67,18 @@ namespace movl_test_bot
                         if (KeyWords.functionHolidayWords.Contains(function.Entity.ToLower()))
                         {
                             await setFunction(context, "urlaubsmodus", false);
+                            responseGiven = true; context.Done(true);
+                        }
+                    }
+
+                }
+                else if (KeyWords.actionAddWords.Contains(ent.Entity.ToLower()) && !responseGiven)
+                {
+                    foreach (EntityRecommendation function in entitiesSorted["Funktion"])
+                    {
+                        if (KeyWords.functionHelperWords.Contains(function.Entity.ToLower()))
+                        {
+                            PromptDialog.Text(context, addHelperDialogInput, "Wen möchten sie hinzufügen?"); ;
                             responseGiven = true;
                         }
                     }
@@ -57,13 +86,61 @@ namespace movl_test_bot
                 }
 
             }
-            context.Done(true);
+            if (!responseGiven)
+                context.Done(true);
+
         }
 
         private async Task setFunction(IDialogContext context, string function, bool set)
         {
             await context.PostAsync("app:setfunction:\"" + function + "\":" + set);
         }
+
+        private void addHelperDialogStart(IDialogContext context)
+        {
+            PromptDialog.Text(context, addHelperDialogInput, "Wen möchten sie hinzufügen?");
+        }
+
+
+        private async Task addHelperDialogInput(IDialogContext context, IAwaitable<string> result)
+        {
+            var person = await result;
+            if (person.Contains(","))
+            {
+                var persons = person.Split(new Char[] { ',' });
+
+                await addHelperDialogEnd(context, new List<string>(persons));
+            } else
+            {
+                var persons = new List<string>();
+                persons.Add(person);
+                await addHelperDialogEnd(context, persons);
+
+            }
+
+        }
+
+        private async Task addHelperDialogEnd(IDialogContext context, List<string> persons)
+        {
+            string personsString = "";
+            foreach (var person in persons)
+            {
+                if (personsString == "")
+                {
+                    personsString = "\"" + person + "\"";
+                }
+                else
+                {
+                    personsString += ", \"" + person + "\"";
+
+                }
+            }
+
+            await context.PostAsync("app:addHelper:{" + personsString + "}");
+            context.Done(true);
+
+        }
+
 
 
 
@@ -85,11 +162,11 @@ namespace movl_test_bot
                         if (KeyWords.allPersonsWords.Contains(entitiesSorted["Person"].First().Entity.ToLower()))
                         {
                             await sendStatusOfAll(context);
-                            responseGiven = true;
+                            responseGiven = true; context.Done(true);
                         } else
                         {
                             await sendStatusOfPerson(context, entitiesSorted["Person"].First().Entity.ToLower());
-                            responseGiven = true;
+                            responseGiven = true; context.Done(true);
 
                         }
                     } else if (entitiesSorted["Person"].Count > 1)
@@ -103,12 +180,15 @@ namespace movl_test_bot
                             }
                         }
                         await sendStatusOfPerson(context, names);
-                        responseGiven = true;
+                        responseGiven = true; context.Done(true);
                     }
                 }
             }
-            context.Done(true);
+            if (!responseGiven)
+                context.Done(true);
+
         }
+
 
         [LuisIntent("")]
         [LuisIntent("None")]
@@ -133,7 +213,7 @@ namespace movl_test_bot
             {
                 if (nameString != "")
                 {
-                    nameString += ", " + name;
+                    nameString += "," + name;
                 }
                 else
                 {
